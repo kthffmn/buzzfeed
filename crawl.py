@@ -39,9 +39,11 @@ def main():
         lines = requests.get(url).text.splitlines()
         for l in lists(lines):
             if l.url in urls:
-                print('duplicate url', url, file=sys.stderr)
+                print('duplicate url', l.url, file=sys.stderr)
             else:
+                urls.add(l.url)
                 print('\t'.join((str(l.n), l.title, l.url)))
+        print(len(urls), 'lists', file=sys.stderr)
         time.sleep(1)
 
 if __name__ == '__main__':
