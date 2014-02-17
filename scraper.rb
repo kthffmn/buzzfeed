@@ -11,7 +11,14 @@ class Scraper
 	end
 
 	def get_fb_shares(article_url)
-    Nokogiri::HTML(open(article_url)).search('.num').children[0].text
+    puts article_url
+    html = Nokogiri::HTML(open(article_url))
+    num = html.search('.num').children[0]
+    if num.length > 0
+      num.text
+    else
+      'mechanize'
+    end
 	end
 
 	def get_data(index_url)
@@ -35,10 +42,13 @@ class Scraper
 	end
 
   def increment
-    counter = 1
-    while counter < 3742
+    counter = 15
+    while counter < 16 #3742
       puts 'index: ' + counter.to_s
       get_data(url + counter.to_s)
+      if counter % 50 == 0
+        puts array.inspect
+      end
       counter += 1
     end
     array
