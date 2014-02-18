@@ -43,11 +43,11 @@ class Scraper
 	end
 
   def increment
-    counter = 15
+    counter = 1
     while counter < 3744
       puts 'index: ' + counter.to_s
       get_data(url + counter.to_s)
-      if counter % 10 == 0
+      if counter % 25 == 0
         puts array.inspect
       end
       counter += 1
