@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class Scraper
-	attr_accessor :array
+	attr_accessor :array, :inaccessible
   attr_reader :url, :agent
 
 	def initialize
@@ -28,13 +28,15 @@ class Scraper
 		h2.each do |e|
 			title = e.text
 			items = /\A(\d+).*/.match(title)
-			if items
+      the_items = /The (\d+).*/.match(title)
+			if items || the_items
+        if items
+          num = items[1]
+        else
+          num = the_items[1]
+        end
         url = 'http://www.buzzfeed.com' + e.children[0].attributes['href'].value
-				array << {:title => title,
-									:items => items[1],
-									:url => url,
-                  :shares => get_fb_shares(url)
-								}
+				array << {:title => title, :items => num, :url => url, :shares => get_fb_shares(url)}
         counter += 1
         puts counter.to_s
 			end
@@ -52,7 +54,11 @@ class Scraper
       end
       counter += 1
     end
-    [array, inaccessible]
+    if inaccessible.length >= 0
+      array
+    else
+      [array, inaccessible]
+    end
   end
 
 end
