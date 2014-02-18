@@ -12,6 +12,7 @@ class Scraper
   end
 
   def get_fb_shares(article_url)
+    puts article_url
     html = Nokogiri::HTML(open(article_url))
     num = html.search('.num').children[0]
     if num
@@ -36,6 +37,9 @@ class Scraper
         num = the_items[1]
       end
       url = 'http://www.buzzfeed.com' + e.children[0].attributes['href'].value
+      if url == 'http://www.buzzfeed.com/video/robinedds/types-of-troll-youll-meet-on-the-internet'
+       url =    'http://www.buzzfeed.com/robinedds/types-of-troll-youll-meet-on-the-internet'
+      end
       array << {:title => title, :items => num, :url => url, :shares => get_fb_shares(url)}
       counter += 1
       puts counter.to_s
@@ -45,7 +49,7 @@ class Scraper
   end
 
   def increment
-    counter = 1
+    counter = 876
     while counter < 3744
       puts 'index: ' + counter.to_s
       get_data(url + counter.to_s)
