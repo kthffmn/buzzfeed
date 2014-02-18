@@ -3,21 +3,22 @@ require 'open-uri'
 
 class Scraper
 	attr_accessor :array
-  attr_reader :url
+  attr_reader :url, :agent
 
 	def initialize
 		@array = []
 		@url = 'http://www.buzzfeed.com/index/paging?r=1&p='
+    @inaccessible = []
 	end
 
 	def get_fb_shares(article_url)
-    puts article_url
     html = Nokogiri::HTML(open(article_url))
     num = html.search('.num').children[0]
-    if num.length > 0
+    if num
       num.text
     else
-      'mechanize'
+      inaccessible << article_url
+      'inaccessible'
     end
 	end
 
@@ -43,15 +44,15 @@ class Scraper
 
   def increment
     counter = 15
-    while counter < 16 #3742
+    while counter < 3744
       puts 'index: ' + counter.to_s
       get_data(url + counter.to_s)
-      if counter % 50 == 0
+      if counter % 10 == 0
         puts array.inspect
       end
       counter += 1
     end
-    array
+    [array, inaccessible]
   end
 
 end
