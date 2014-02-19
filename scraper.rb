@@ -27,29 +27,32 @@ class Scraper
     h2 = Nokogiri::HTML(open(index_url)).search('h2')
     counter = 0
     h2.each do |e|
-    title = e.text
-    items = /\A(\d+).*/.match(title)
-    the_items = /The (\d+).*/.match(title)
-    if items || the_items
-      if items
-        num = items[1]
-      else
-        num = the_items[1]
+      title = e.text
+      items = /\A(\d+).*/.match(title)
+      the_items = /The (\d+).*/.match(title)
+      if title != '\n\t\t\t\t\n\t\t\t\t\tThe 7 Most Terrifying Archaeological Discoveries\n\t\t\t\t\t cracked.com\n\t\t\t\t\n\t\t\t' 
+        if items || the_items
+          print title
+          if items
+            num = items[1]
+          else
+            num = the_items[1]
+          end
+          url = 'http://www.buzzfeed.com' + e.children[0].attributes['href'].value
+          if url == 'http://www.buzzfeed.com/video/robinedds/types-of-troll-youll-meet-on-the-internet'
+            url = 'http://www.buzzfeed.com/robinedds/types-of-troll-youll-meet-on-the-internet'
+          end
+          array << {:title => title, :items => num, :url => url, :shares => get_fb_shares(url)}
+          counter += 1
+          puts counter.to_s
+        end
       end
-      url = 'http://www.buzzfeed.com' + e.children[0].attributes['href'].value
-      if url == 'http://www.buzzfeed.com/video/robinedds/types-of-troll-youll-meet-on-the-internet'
-       url =    'http://www.buzzfeed.com/robinedds/types-of-troll-youll-meet-on-the-internet'
-      end
-      array << {:title => title, :items => num, :url => url, :shares => get_fb_shares(url)}
-      counter += 1
-      puts counter.to_s
-      end
-    end
     array
+    end
   end
 
   def increment
-    counter = 876
+    counter = 1525
     while counter < 3744
       puts 'index: ' + counter.to_s
       get_data(url + counter.to_s)
