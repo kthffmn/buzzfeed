@@ -5,7 +5,7 @@ def create_array_of_titles(array)
   array.each do |hash|
     space_in_front << " " + hash[:title] + "."
   end
-  titles = space_in_front[1..-1].gsub('\"', '"')
+  titles = space_in_front[1..-1].gsub('\"', '"').gsub('\"', '"')
 end
 
-puts create_array_of_titles(array).inspect
+print create_array_of_titles(array)
