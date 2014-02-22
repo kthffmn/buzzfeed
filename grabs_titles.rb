@@ -9,4 +9,3 @@ def create_array_of_titles(array)
 end
 
 puts create_array_of_titles(array).inspect
-
