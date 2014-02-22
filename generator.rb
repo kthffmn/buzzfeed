@@ -17,5 +17,5 @@ class Generator
 
 end
 
-my_generator = Generator.new('./titles.txt')
+my_generator = Generator.new('./titles_two.txt')
 puts my_generator.sentence.inspect
