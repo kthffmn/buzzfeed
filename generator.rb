@@ -1,20 +1,21 @@
 require 'marky_markov'
-require './titles.txt'
 
 class Generator
-  ARRAY = ["ways to", "reasons to", "things to"]
-
+  ARRAY = ["Ways To", "Reasons To", "Things To", "", "Things", "Ways"]
   attr_reader :markov
-  def initialize
-    markov = MarkyMarkov::Dictionary.new('dictionary', 1)
-    markov.parse_file "titles.txt"
+
+  def initialize(text_file)
+    file = File.new("#{text_file}", "r")
+    @markov = MarkyMarkov::Dictionary.new('dictionary', 1)
+    @markov.parse_file file
   end
 
   def sentence
-    rand(1..36) + ARRAY.sample + markov.generate_1_sentences
+    sentence = rand(1..36).to_s + " " + ARRAY.sample + " " + @markov.generate_1_sentences
+    sentence.gsub("  ", " ")
   end
 
 end
 
-my_generator = Generator.new
+my_generator = Generator.new('./titles.txt')
 puts my_generator.sentence.inspect
