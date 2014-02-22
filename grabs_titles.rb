@@ -1,4 +1,3 @@
-
 def create_array_of_titles(array)
   space_in_front = ""
   array.each do |hash|
@@ -8,4 +7,3 @@ def create_array_of_titles(array)
 end
 
 puts create_array_of_titles(buzzfeed_array).inspect
-
