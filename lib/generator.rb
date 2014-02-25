@@ -16,6 +16,3 @@ class Generator
   end
 
 end
-
-my_generator = Generator.new('./titles.txt')
-puts my_generator.sentence.inspect
