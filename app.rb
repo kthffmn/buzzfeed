@@ -5,7 +5,7 @@ require './lib/file'
 class App < Sinatra::Application
 
   get '/' do
-    erb :index
+    haml :index
   end
 
   post '/result' do
