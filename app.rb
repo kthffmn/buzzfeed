@@ -9,7 +9,7 @@ class App < Sinatra::Application
   end
 
   post '/result' do
-    my_generator = Generator.new('./titles.txt', params["word"])
+    my_generator = Generator.new('./titles_two.txt', params["word"])
     @title = my_generator.user_title
     haml :result
   end

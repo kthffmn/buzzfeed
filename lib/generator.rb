@@ -1,7 +1,7 @@
 require 'debugger'
 
 class Generator
-  ARRAY = ["Ways To", "Reasons To", "Things To", "", "Things", "Ways"]
+  # ARRAY = ["Ways To", "Reasons To", "Things To", "", "Things", "Ways"]
   attr_reader :markov, :word, :tgr, :marky_title
 
   def initialize(text_file, word)
