@@ -25,9 +25,8 @@ class BuzzfeedList:
 
 def lists(lines):
     for line in lines:
-        matches = LIST_RE.findall(line)
-        if matches:
-            yield BuzzfeedList(matches[0][1], matches[0][0])
+        for match in LIST_RE.findall(line):
+            yield BuzzfeedList(match[1], match[0])
 
 def main():
     parser = argparse.ArgumentParser()
