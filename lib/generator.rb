@@ -3,7 +3,7 @@ class Generator
   attr_reader :markov, :word, :tgr
 
   def initialize(text_file, word)
-    file = File.new("#{text_file}", "r")
+    file = File.new("./public/#{text_file}", "r")
     @markov = MarkyMarkov::Dictionary.new('dictionary', 2)
     @markov.parse_file file
     @word = word.capitalize
@@ -11,8 +11,9 @@ class Generator
   end
 
   def marky_title
-    sentence = rand(1..36).to_s + " " + ARRAY.sample + " " + @markov.generate_1_sentences
-    sentence.gsub("  ", " ")
+    # sentence = rand(1..36).to_s + " " + ARRAY.sample + " " + @markov.generate_1_sentences
+    # sentence.gsub("  ", " ")
+    @markov.generate_1_sentences
   end
 
   def user_title

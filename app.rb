@@ -1,6 +1,6 @@
 require 'bundler'
 Bundler.require
-require './lib/file'
+require './lib/generator'
 
 class App < Sinatra::Application
 
