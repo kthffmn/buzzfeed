@@ -6,7 +6,9 @@ import time
 
 import requests
 
-LIST_RE = re.compile(r'<a rel:gtrack_id="post/title" .*? href="(.*?)" .*?>(\d+ .*?)</a>')
+LIST_RE = re.compile(r'<a rel:gtrack_id="post/title" .*? href="(.*?)" .*?>'
+                     r'((the(se)? )?(top )?\d+ .*?)'
+                     r'</a>', re.IGNORECASE)
 PAGE_URL = 'http://www.buzzfeed.com/index/paging?r=1&p={}'
 
 class BuzzfeedList:
@@ -14,7 +16,9 @@ class BuzzfeedList:
         self.title = title
         self.url = url
 
-        self.n = int(title.split()[0])
+        # first number in title:
+        numbers = re.findall(r'\b\d+\b', title)
+        self.n = int(numbers[0])
 
     def __repr__(self):
         return 'BuzzfeedList({}, {})'.format(repr(self.title), repr(self.url))
