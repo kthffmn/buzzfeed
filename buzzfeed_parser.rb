@@ -35,7 +35,8 @@ class CSVParser
         .gsub('&#8221;', '"')
         .gsub('&#8216;', "'")
         .gsub('&#8230;', "...")
-
+        .gsub('&eacute', "é")
+        .gsub('&quot;', '"')
   end
 
 end

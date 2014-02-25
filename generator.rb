@@ -6,7 +6,7 @@ class Generator
 
   def initialize(text_file)
     file = File.new("#{text_file}", "r")
-    @markov = MarkyMarkov::Dictionary.new('dictionary', 1)
+    @markov = MarkyMarkov::Dictionary.new('dictionary', 2)
     @markov.parse_file file
   end
 
@@ -16,6 +16,3 @@ class Generator
   end
 
 end
-
-my_generator = Generator.new('./titles_two.txt')
-puts my_generator.sentence.inspect
