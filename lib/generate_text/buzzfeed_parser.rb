@@ -28,7 +28,14 @@ class CSVParser
     parse.each do |hash|
       text << " #{hash[:title]}."
     end
-    text.gsub("&nbsp;", " ").gsub("&#8217;", "'")
+    text.gsub("&nbsp;", " ")
+        .gsub('&#8212;', '—')
+        .gsub("&#8217;", "'")
+        .gsub('&#8220;', '"')
+        .gsub('&#8221;', '"')
+        .gsub('&#8216;', "'")
+        .gsub('&#8230;', "...")
+
   end
 
 end

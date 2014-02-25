@@ -17,7 +17,7 @@ class App < Sinatra::Application
     nouns_hash = tgr.get_nouns(tagged)
     gsub_out = nouns_hash.first[0]
     gsub_in = params["word"]
-    final_title = title.gsub(gsub_out, gsub_in)
+    @final_title = title.gsub(gsub_out, gsub_in)
   end
  
 end
