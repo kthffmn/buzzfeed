@@ -11,6 +11,7 @@ class App < Sinatra::Application
   post '/result' do
     my_generator = Generator.new('./titles.txt', params["word"])
     @title = my_generator.user_title
+    haml :result
   end
  
 end
