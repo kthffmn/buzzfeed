@@ -12,6 +12,9 @@ GEM
     engtagger (0.1.2)
     haml (4.0.5)
       tilt
+    marky_markov (0.3.4)
+      ox (~> 1.4)
+    ox (1.9.4)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
@@ -46,6 +49,7 @@ DEPENDENCIES
   debugger
   engtagger
   haml
+  marky_markov
   sass
   shotgun
   sinatra

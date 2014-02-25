@@ -5,6 +5,7 @@ gem "sinatra"
 gem "haml"
 gem "sass"
 gem "engtagger"
+gem "marky_markov"
 
 
 group :development do
