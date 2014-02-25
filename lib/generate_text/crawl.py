@@ -76,8 +76,10 @@ def main():
                         help='resume from a particular page')
     args = parser.parse_args()
 
-    urls = set()
+    columns = ('title', 'url', 'n', 'views', 'facebook', 'twitter', 'emails')
+    print('\t'.join(columns)) # column name header
 
+    urls = set()
     for i in itertools.count(args.page):
         url = PAGE_URL.format(i)
         print(url, file=sys.stderr)
@@ -91,8 +93,8 @@ def main():
                 time.sleep(0.5)
                 load_stats(l)
 
-                print('\t'.join((str(x) if x is not None else '')
-                                for x in (l.title, l.url, l.n, l.views, l.facebook, l.twitter, l.emails)))
+                values = (getattr(l, k) for k in columns)
+                print('\t'.join(str(x) if x is not None else '' for x in values))
         print(len(urls), 'lists', file=sys.stderr)
         time.sleep(0.5)
 
