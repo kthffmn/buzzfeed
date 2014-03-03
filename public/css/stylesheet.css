@@ -1,0 +1,64 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+body {
+  font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  color: #EE3322;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.outercontainer {
+  text-align: center;
+  display: block;
+}
+
+.innercontainer {
+  display: inline-block;
+  background-color: #EEEEEE;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  width: 556px;
+}
+
+.buttonz {
+  background-color: white;
+  color: #EE3322;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1em;
+  border: none;
+}
+
+.buttonz:hover{
+  background-color: #EE3322;
+  color: white;
+}
+
+.abouty {
+  font-size: 1.23em;
+}
+
+.whitebox {
+  margin-top: 20px;
+  width: 150px;
+}
+
+.resultz {
+  margin-bottom: 30px;
+}
+
+a:visited {
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:none;
+  color: white;
+}
+
+a:active {text-decoration:none;}

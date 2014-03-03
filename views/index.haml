@@ -1,7 +1,11 @@
 %h1 Buzzfeed Headline Generator
-%form{:action=>"/result", :method=>"POST"}
 
-  %label{:for=>"word"} What do you want your Buzzfeed article to be about?
-  %input{:id=>"word", :type=>"text", :name=>"word"}
-
-  %button{:type=>"submit", :value=>"submit"} Get Headline!
+.outercontainer
+  .innercontainer
+    %form{:action=>"/result", :method=>"POST"}
+      .abouty
+        %label{:class=>"abouty", :for=>"word"} What do you want your Buzzfeed article to be about?
+      .boxy
+        %input{:id=>"word", :type=>"text", :name=>"word", :class=> "whitebox"}
+      .buttony
+        %button{:class=> "submit buttonz", :type=>"submit", :value=>"submit"} Get Headline!
