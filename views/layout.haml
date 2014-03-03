@@ -1,7 +1,10 @@
 !!!
 %html
-	%head
-		%link{:href=>"/css/stylesheet.css", :rel=>"stylesheet", :type=>"text/css"}
-		%title
-	%body
-		= yield
+  %head
+    %link{:href=> "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", :rel=> "stylesheet"}
+    %link{:href=> "css/bootstrap.min.css", :rel=> "stylesheet", :type=> "text/css"}
+    %link{:href=> "css/bootstrap-responsive.min.css", :rel=> "stylesheet", :type=> "text/css"}
+    %link{:href=> "css/stylesheet.css", :rel=>"stylesheet", :type=>"text/css"}
+    %title Buzzfeed Generator
+  %body
+    = yield
